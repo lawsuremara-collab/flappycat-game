@@ -680,11 +680,17 @@
             }
         }
         
-        canvas.addEventListener('click', (e) => {
-            e.preventDefault();
-            if(!gameRunning) return;
-            jump();
-        });
+        function handleInput(e) {
+    e.preventDefault();
+    if(!gameRunning) return;
+    jump();
+}
+
+// mouse click
+canvas.addEventListener('click', handleInput);
+
+// mobile touch (VERY IMPORTANT)
+canvas.addEventListener('touchstart', handleInput);
         window.addEventListener('keydown', handleJump);
         document.getElementById('restartButton').addEventListener('click', () => {
             restartGame();
